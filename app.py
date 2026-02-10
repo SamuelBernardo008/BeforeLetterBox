@@ -15,8 +15,8 @@ def home():
 def ola_mundo():
     return "olá, mundo"
 
-@app.route('/agenda', methods=['GET', 'POST'])
-def agenda():
+@app.route('/BeforeLetterBox', methods=['GET', 'POST'])
+def before_letter_box():
     tarefas = None
     
     if request.method == 'POST':
@@ -26,13 +26,13 @@ def agenda():
         tarefa.salvar_tarefa()
 
     tarefas = Tarefa.obter_tarefas()
-    return render_template('agenda.html', titulo= 'Agenda', tarefas=tarefas)
+    return render_template('BeforeLetterBox.html', titulo= 'Before Letter Box', tarefas=tarefas)
 
 @app.route('/delete/<int:idTarefa>')
 def delete(idTarefa):
     tarefa = Tarefa.id(idTarefa)
     tarefa.excluir_tarefa()
-    return redirect(url_for('agenda'))
+    return redirect(url_for('before_letter_box'))
 
 @app.route('/update/<int:idTarefa>' , methods=['GET', 'POST'])
 def update(idTarefa):
@@ -42,9 +42,9 @@ def update(idTarefa):
         data = request.form['data-conclusao']
         tarefa = Tarefa(titulo, data, idTarefa) 
         tarefa.atualizar_tarefa()
-        return redirect(url_for('agenda'))
+        return redirect(url_for('before_letter_box'))
     
     tarefas = Tarefa.obter_tarefas()
     tarefa_selecionada = Tarefa.id(idTarefa)
 
-    return render_template('agenda.html', titulo= 'Agenda', tarefas=tarefas, tarefa_selecionada=tarefa_selecionada)
+    return render_template('BeforeLetterBox.html', titulo= 'BeforeLetterBox', tarefas=tarefas, tarefa_selecionada=tarefa_selecionada)

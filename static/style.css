@@ -92,7 +92,7 @@ button:hover{
     border-radius: 12px;
     padding: 12px 16px;
     margin: 8px auto;
-    max-width: 500px;
+    max-width: 1000px;
     display: flex;
     align-items: center;           
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -136,7 +136,7 @@ button:hover{
     border-radius: 6px;
     background-color: blue;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.422);
-    margin-left: auto;
+    margin-left: 5px;
     display: flex;
 }
 
@@ -189,4 +189,8 @@ button:hover{
     height: auto;
     text-decoration: none;
     color: #ffffff;
+}
+
+#tipo {
+    text-align: end;
 }

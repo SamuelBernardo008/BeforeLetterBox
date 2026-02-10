@@ -56,7 +56,7 @@ class Database:
 
 
 try: 
-    db = Database('./data/tarefas.sqlite3')
+    db = Database()
     db.executar('''
     CREATE TABLE IF NOT EXISTS tarefas (
         id  INTEGER PRIMARY KEY AUTOINCREMENT,
