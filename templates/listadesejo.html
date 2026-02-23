@@ -9,14 +9,15 @@
 
     
 
-    <div class="subtitulo"><h2 class="poppins-regular">lista de desejos</h2></div>
+    <div class="subtitulo"><h2 class="poppins-regular">LETTER BOX</h2></div>
     <form method="POST">
         <input type="text" name="titulo-recomendacao" id="titulo-recomendacao" placeholder="Titulo da recomendação"
         required class="poppins-regular" value="{{ recomendacao_selecionada.titulo_recomendacao if recomendacao_selecionada else ''}}">
 
         <input type="text" name="quem-recomendacao" id="quem-recomendacao" placeholder="Recomendado por" value="{{ recomendacao_selecionada.quem_recomendacao if recomendacao_selecionada else ''}}">
             
-        <select name="tipo-recomendacao" id="tipo-recomendacao" required class="poppins-regular">
+        <select name="tipo-recomendacao" id="tipo-recomendacao" required class="poppins-regular"
+        class="inserir">
                 <option value="">Tipo</option>
                 <option value="Filme">Filme</option>
                 <option value="Serie">Série</option>
@@ -47,7 +48,7 @@
         {%endfor%}
     </ul>
 {% else %}
-    <p class="poppins-regular" style="color: rgb(0, 0, 0);" id="nenhum">Nenhuma recomendação anotada.</p>   
+    <p class="poppins-regular" style="color: rgb(255, 255, 255);" id="nenhum">Nenhuma recomendação anotada.</p>   
 {% endif %}
 
 {% endblock %}

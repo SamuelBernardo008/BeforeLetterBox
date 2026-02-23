@@ -23,7 +23,7 @@ def listadesejo():
 
     recomendacoes = Recomendacao.obter_recomendacoes()
 
-    return render_template('ListaDesejo.html', titulo= 'Before Letter Box', recomendacoes=recomendacoes)
+    return render_template('ListaDesejo.html', titulo= 'Before', recomendacoes=recomendacoes)
 
 
 @app.route('/delete/<int:idRecomendacao>')
