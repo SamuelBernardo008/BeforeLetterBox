@@ -12,41 +12,42 @@
     <div class="subtitulo"><h2 class="poppins-regular">lista de desejos</h2></div>
     <form method="POST">
         <input type="text" name="titulo-recomendacao" id="titulo-recomendacao" placeholder="Titulo da recomendação"
-        required class="poppins-regular" value="{{ tarefa_selecionada.titulo_recomendacao if tarefa_selecionada else ''}}">
-        <input type="text" name="quem-recomendacao" id="quem-recomendacao" placeholder="Recomendado por..."
+        required class="poppins-regular" value="{{ recomendacao_selecionada.titulo_recomendacao if recomendacao_selecionada else ''}}">
 
-        value="{{ tarefa_selecionada.quem_recomendacao if tarefa_selecionada else ''}}">
-            <select name="tipo-recomendacao" id="tipo-recomendacao" required class="poppins-regular">
+        <input type="text" name="quem-recomendacao" id="quem-recomendacao" placeholder="Recomendado por" value="{{ recomendacao_selecionada.quem_recomendacao if recomendacao_selecionada else ''}}">
+            
+        <select name="tipo-recomendacao" id="tipo-recomendacao" required class="poppins-regular">
                 <option value="">Tipo</option>
                 <option value="Filme">Filme</option>
                 <option value="Serie">Série</option>
                 <option value="Livro">Livro</option>
                 <option value="Jogo">Jogo</option>
+                <option value="Musica">Música</option>
                 <option value="Outro">Outro</option>
             </select>
 
         <button type="submit" class="poppins-regular"> Salvar </button>
     </form>
 
-    {% if tarefa_selecionada %}
+    {% if recomendacao_selecionada %}
         <a href="{{ url_for('listadesejo') }}" id="cancelar">Cancelar</a>
     {% endif %}
     
 <h2 class="subtitulo" id="listatitulo"> Lista de recomendações: </h2>
 
-{% if tarefas %}
+{% if recomendacoes %}
 
     <ul>
-        {% for tarefa in tarefas %}
-            <li class="tarefa-card">{{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusao }} 
-            <a href="{{ url_for('delete', idTarefa=tarefa.id_tarefa) }}" id="apagar">Apagar</a>
-            <a href="{{ url_for('update', idTarefa=tarefa.id_tarefa) }}" id="editar">Editar</a>
+        {% for recomendacao in recomendacoes %}
+            <li class="tarefa-card">{{ recomendacao.titulo_recomendacao }} - {{ recomendacao.quem_recomendacao }} - {{ recomendacao.tipo_recomendacao }}
+            <a href="{{ url_for('delete', idRecomendacao=recomendacao.id_recomendacao) }}" id="apagar">Apagar</a>
+            <a href="{{ url_for('update', idRecomendacao=recomendacao.id_recomendacao) }}" id="editar">Editar</a>
 
             </li>
         {%endfor%}
     </ul>
 {% else %}
-    <p class="poppins-regular" style="color: white;" id="nenhum">Nenhuma tarefa cadastrada.</p>   
+    <p class="poppins-regular" style="color: rgb(0, 0, 0);" id="nenhum">Nenhuma recomendação anotada.</p>   
 {% endif %}
 
 {% endblock %}

@@ -54,19 +54,3 @@ class Database:
             traceback.print_tb(tb)
 
         self.close()
-
-
-try: 
-    db = Database('./data/recomendacoes.sqlite3')
-    db.executar('''
-    CREATE TABLE IF NOT EXISTS recomendacoes (
-        id  INTEGER PRIMARY KEY AUTOINCREMENT,
-        titulo_recomendacao TEXT NOT NULL,
-        quem_recomendacao TEXT,
-        tipo_recomendacao TEXT NOT NULL);
-    ''')
-    db.executar('INSERT INTO recomendacoes (titulo_recomendacao, quem_recomendacao, tipo_recomendacao) VALUES (?,?,?);', ('A Cronica dos Kane', 'Samuel', 'Livro'))
-except Exception as e:
-    print(f"erro ao criar tabela: {e}")
-finally:
-    db.close()
