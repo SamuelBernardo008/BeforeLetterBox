@@ -9,20 +9,30 @@
 
     
 
-    <div class="subtitulo"><h2 class="poppins-regular">lista digital</h2></div>
+    <div class="subtitulo"><h2 class="poppins-regular">lista de desejos</h2></div>
     <form method="POST">
-        <input type="text" name="titulo-tarefa" id="titulo-tarefa" placeholder="Titulo da tarefa"
-        required class="poppins-regular" value="{{ tarefa_selecionada.titulo_tarefa if tarefa_selecionada else ''}}">
-        <input type="date" name="data-conclusao" id="data-conclusao" class="poppins-regular" value="{{ tarefa_selecionada.data_conclusao if tarefa_selecionada else ''}}">
+        <input type="text" name="titulo-recomendacao" id="titulo-recomendacao" placeholder="Titulo da recomendação"
+        required class="poppins-regular" value="{{ tarefa_selecionada.titulo_recomendacao if tarefa_selecionada else ''}}">
+        <input type="text" name="quem-recomendacao" id="quem-recomendacao" placeholder="Recomendado por..."
+
+        value="{{ tarefa_selecionada.quem_recomendacao if tarefa_selecionada else ''}}">
+            <select name="tipo-recomendacao" id="tipo-recomendacao" required class="poppins-regular">
+                <option value="">Tipo</option>
+                <option value="Filme">Filme</option>
+                <option value="Serie">Série</option>
+                <option value="Livro">Livro</option>
+                <option value="Jogo">Jogo</option>
+                <option value="Outro">Outro</option>
+            </select>
 
         <button type="submit" class="poppins-regular"> Salvar </button>
     </form>
 
     {% if tarefa_selecionada %}
-        <a href="{{ url_for('agenda') }}" id="cancelar">Cancelar</a>
+        <a href="{{ url_for('listadesejo') }}" id="cancelar">Cancelar</a>
     {% endif %}
     
-<h2 class="subtitulo" id="listatitulo"> Lista de Tarefas: </h2>
+<h2 class="subtitulo" id="listatitulo"> Lista de recomendações: </h2>
 
 {% if tarefas %}
 
